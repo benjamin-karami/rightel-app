@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,18 +10,78 @@
   <body>
     <section id="main-content">
       <div id="contents">
+        <div id="error-message">
+          <p class="error-message">error</p>
+        </div>
         <div id="top-nav">
           <div id="step">
             <div class="step-content">
-              <p>مشخصات فردی</p>
-              <p>مرحله 1 از 4</p>
+              <p class="primary-text">مشخصات فردی</p>
+              <p class="secondary-text">مرحله 1 از 4</p>
             </div>
             <div class="step-img">
-              <img src="" alt="RighTel-Logo" />
+              <img src="./assets/img/rightel-logo.jpg" alt="RighTel-Logo" />
             </div>
+          </div>
+          <div class="step-progress">
+            <img src="./assets/img/wizard1.png" alt="step-wizard" />
+          </div>
+        </div>
+        <div class="form">
+          <div class="input-container">
+            <label class="primary-text"
+              >کد ملی <span class="primary-color">*</span></label
+            >
+            <input
+              id="identity-number"
+              type="number"
+              pattern="/^-?\d+\.?\d*$/"
+              onKeyPress="if(this.value.length==10) return false;"
+            />
+          </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >شماره تلفن همراه <span class="primary-color">*</span></label
+            >
+            <input
+              id="cellPhone-number"
+              type="number"
+              pattern="/^-?\d+\.?\d*$/"
+              onKeyPress="if(this.value.length==11) return false;"
+            />
+          </div>
+          <div class="terms">
+            <input
+              class="inp-cbx"
+              id="cbx"
+              type="checkbox"
+              style="display: none;"
+            />
+            <label class="cbx" for="cbx"
+              ><span class="checkboxi">
+                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
+              ><span class="primary-text">
+                <strong class="primary-color" id="modalTrigger"
+                  >شرایط ثبت نام و خرید</strong
+                >
+                رایتل را می‌پذیرم</span
+              ></label
+            >
+          </div>
+          <div class="btn-container">
+            <a id="msisdn-submit" class="btn-primary" href="#">ارسال</a>
           </div>
         </div>
       </div>
+      <div id="Modalcontent" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div><span class="close">×</span></div>
+        </div>
+      </div>
     </section>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
