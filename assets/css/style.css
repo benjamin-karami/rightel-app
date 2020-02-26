@@ -86,6 +86,11 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
+html,
+body {
+  overflow-x: hidden;
+}
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -103,6 +108,7 @@ section {
 body {
   line-height: 1;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -423,6 +429,10 @@ body {
   padding: 10px 0px 50px;
 }
 
+.padding-bottom {
+  padding: 0 0 50px;
+}
+
 #step {
   display: flex;
   justify-items: center;
@@ -507,13 +517,16 @@ body {
 #identity-number {
   background-image: url("../img/identificatio-icon.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-size: 9% 60%;
+  background-position: right 7px top 50%;
 }
 
 #cellPhone-number {
   background-image: url("../img/cell-phone-icon.png");
   background-repeat: no-repeat;
   background-position: right;
+  background-size: 9% 60%;
+  background-position: right 7px top 50%;
 }
 
 input:focus {
@@ -536,8 +549,21 @@ input:focus {
   color: #fff;
   font-size: 20px;
   border-radius: 6px;
-  width: 250px;
+  width: 60%;
   text-align: center;
+}
+
+.btn-secondary {
+  padding: 10px 0px;
+  border: 1px solid #aaa;
+  color: #aaa;
+  font-size: 18px;
+  border-radius: 6px;
+  width: 35%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #error-message {
@@ -545,7 +571,7 @@ input:focus {
   background-color: #ff3550;
   color: #fff;
   text-align: center;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   margin: auto;
@@ -574,7 +600,7 @@ input:focus {
 
 select {
   width: 33%;
-  padding: 5px 10px;
+  padding: 10px 10px;
   border-radius: 5px;
   font-family: IRANSansWebFaNum;
 }
@@ -582,13 +608,43 @@ select {
 #name {
   background-image: url("../img/name-icon.png");
   background-repeat: no-repeat;
-  background-position: right 8px top 50%;
+  background-size: 9% 50%;
+  background-position: right 7px top 50%;
 }
 
 #surname {
   background-image: url("../img/family-icon.png");
   background-repeat: no-repeat;
-  background-position: right 8px top 50%;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#identity-num {
+  background-image: url("../img/identificatio-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#birth-place {
+  background-image: url("../img/mahalesodoor-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#father-name {
+  background-image: url("../img/fathername-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#shomare-shenasname {
+  background-image: url("../img/idnumber-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
 }
 
 .gender-container {

@@ -9,7 +9,7 @@
   </head>
   <body>
     <section id="main-content">
-      <div id="contents">
+      <div id="contents" class="padding-bottom">
         <div id="error-message">
           <p class="error-message">error</p>
         </div>
@@ -17,7 +17,7 @@
           <div id="step">
             <div class="step-content">
               <p class="primary-text">مشخصات فردی</p>
-              <p class="secondary-text">مرحله 1 از 4</p>
+              <p class="secondary-text">مرحله 2 از 5</p>
             </div>
             <div class="step-img">
               <img src="./assets/img/rightel-logo.png" alt="RighTel-Logo" />
@@ -52,7 +52,13 @@
             </div>
           </div>
         </div>
-        <div class="form">
+        <form
+          class="form"
+          id="info-send"
+          name="info-send"
+          method="POST"
+          action=""
+        >
           <div class="input-container">
             <label class="primary-text"
               >نام<span class="primary-color">*</span></label
@@ -92,18 +98,53 @@
               >جنسیت<span class="primary-color">*</span></label
             >
             <div class="gender-container">
-              <p><img src="./assets/img/male-icon.png" alt="" /> مرد</p>
-              <p><img src="./assets/img/male-icon.png" alt="" /> زن</p>
+              <p class="male" data-gender="male">
+                <img src="./assets/img/male-icon.png" alt="" /> مرد
+              </p>
+              <p class="female" data-gender="female">
+                <img
+                  style="transform: scale(1.3)"
+                  src="./assets/img/female-icon.png"
+                  alt=""
+                />
+                زن
+              </p>
+              <input type="radio" id="male" name="gender" value="مرد" hidden />
+              <input type="radio" id="female" name="gender" value="زن" hidden />
             </div>
           </div>
-          <div class="btn-container">
-            <a id="msisdn-submit" class="btn-primary" href="#">ارسال</a>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >شماره شناسنامه<span class="primary-color">*</span></label
+            >
+            <input id="shomare-shenasname" type="number" required />
           </div>
-        </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >محل صدور<span class="primary-color">*</span></label
+            >
+            <input id="birth-place" type="text" required />
+          </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >کد ملی<span class="primary-color">*</span></label
+            >
+            <input
+              id="identity-num"
+              type="number"
+              pattern="/^-?\d+\.?\d*$/"
+              onKeyPress="if(this.value.length==10) return false;"
+              required
+            />
+          </div>
+          <div class="btn-container">
+            <a id="msisdn-submit" class="btn-primary" href="#">مرحله بعد</a>
+            <a id="back-btn" class="btn-secondary" href="#">بازگشت</a>
+          </div>
+        </form>
       </div>
     </section>
     <script src="./assets/js/jquery.min.js"></script>
-    <script src="./assets/js/jquery.inputmask.bundle.min.js"></script>
     <script>
       $(document).ready(function() {
         (function() {
@@ -152,19 +193,230 @@
           } while (year <= 31);
         })();
       });
-
+      var gender = "";
       $(".gender-container p").click(function() {
-        $(this)
-          .addClass("active")
-          .siblings()
-          .removeClass("active");
-        $(this)
-          .children("img")
-          .attr("src", "./assets/img/male-icon-white.png");
-        $(this)
-          .siblings()
-          .children("img")
-          .attr("src", "./assets/img/male-icon.png");
+        if ($(this).hasClass("male")) {
+          $(this)
+            .addClass("active")
+            .siblings()
+            .removeClass("active");
+          $(this)
+            .children("img")
+            .attr("src", "./assets/img/male-icon-white.png");
+          $(this)
+            .siblings()
+            .children("img")
+            .attr("src", "./assets/img/female-icon.png");
+
+          $("#female").attr("checked", false);
+          $("#male").attr("checked", true);
+        } else {
+          $(this)
+            .addClass("active")
+            .siblings()
+            .removeClass("active");
+          $(this)
+            .children("img")
+            .attr("src", "./assets/img/female-icon-white.png");
+          $(this)
+            .siblings()
+            .children("img")
+            .attr("src", "./assets/img/male-icon.png");
+          $("#male").attr("checked", false);
+          $("#female").attr("checked", true);
+        }
+        gender = $(this).attr("data-gender");
+      });
+
+      $(document).ready(function() {
+        var persianNumbers = [
+            /۰/g,
+            /۱/g,
+            /۲/g,
+            /۳/g,
+            /۴/g,
+            /۵/g,
+            /۶/g,
+            /۷/g,
+            /۸/g,
+            /۹/g
+          ],
+          arabicNumbers = [
+            /٠/g,
+            /١/g,
+            /٢/g,
+            /٣/g,
+            /٤/g,
+            /٥/g,
+            /٦/g,
+            /٧/g,
+            /٨/g,
+            /٩/g
+          ],
+          fixNumbers = function(str) {
+            if (typeof str === "string") {
+              for (var i = 0; i < 10; i++) {
+                str = str
+                  .replace(persianNumbers[i], i)
+                  .replace(arabicNumbers[i], i);
+              }
+            }
+            return str;
+          };
+        $("#msisdn-submit").click(function(e) {
+          e.preventDefault();
+          var name = $("#name").val();
+          var surname = $("#surname").val();
+          var birthyear = $("#birth-year").val();
+          var birthmonth = $("#birth-month").val();
+          var birthday = $("#birth-day").val();
+          var fathername = $("#father-name").val();
+          var identity = $("#identity-num").val();
+          var shenasname = $("#shomare-shenasname").val();
+          var birthplace = $("#birth-place").val();
+
+          identity = fixNumbers(identity);
+          shenasname = fixNumbers(shenasname);
+          if (
+            name.length >= 2 &&
+            surname.length >= 2 &&
+            birthyear <= 1380 &&
+            birthmonth &&
+            birthday &&
+            fathername.length >= 2 &&
+            identity.length === 10 &&
+            shenasname &&
+            birthplace &&
+            gender
+          ) {
+            $("#info-send").submit();
+            console.log("data sent");
+          } else {
+            if (!(name.length >= 2)) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("نام خود را وارد کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!(surname.length >= 2)) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("نام خانوادگی خود را وارد کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!(fathername.length >= 2)) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("نام پدر خود را وارد نمایید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!birthyear) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("سال تولد خود را انتخواب کنبد");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!(birthyear <= 1380)) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html(
+                "ثبت نام سیمکارت برای افراد زیر 18 سال امکان‌پذیر نمی‌باشد"
+              );
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!birthmonth || !birthday) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("تاریخ تولد خود را انتخواب کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!gender) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("لطفا جنسیت خود را تعیین کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!shenasname) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("شماره شناسنامه خود را وارد کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!birthplace) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("محل صدور شناسنامه خود را مشخص کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!(identity.length === 10)) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("کد ملی خود را وارد کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            }
+          }
+        });
       });
     </script>
   </body>

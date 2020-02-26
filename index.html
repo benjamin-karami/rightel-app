@@ -17,7 +17,7 @@
           <div id="step">
             <div class="step-content">
               <p class="primary-text">مشخصات فردی</p>
-              <p class="secondary-text">مرحله 1 از 4</p>
+              <p class="secondary-text">مرحله 1 از 5</p>
             </div>
             <div class="step-img">
               <img src="./assets/img/rightel-logo.png" alt="RighTel-Logo" />
@@ -52,7 +52,13 @@
             </div>
           </div>
         </div>
-        <div class="form">
+        <form
+          id="numberSend-form"
+          name="numberSend-form"
+          class="form"
+          method="POST"
+          action=""
+        >
           <div class="input-container">
             <label class="primary-text"
               >کد ملی <span class="primary-color">*</span></label
@@ -97,7 +103,7 @@
           <div class="btn-container">
             <a id="msisdn-submit" class="btn-primary" href="#">ارسال</a>
           </div>
-        </div>
+        </form>
       </div>
       <div id="Modalcontent" class="modal">
         <!-- Modal content -->
@@ -199,7 +205,7 @@
             (ussdMtn && identity.length === 10 && checkbox.is(":checked")) ||
             (ussdRigh && identity.length === 10 && checkbox.is(":checked"))
           ) {
-            // $("#numberSend-form").submit();if
+            $("#numberSend-form").submit();
             console.log("every thing is ok");
           } else {
             if (!(identity.length === 10)) {
