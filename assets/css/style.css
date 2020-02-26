@@ -399,8 +399,8 @@ input[type="number"] {
 }
 
 @font-face {
-  font-family: IRANYekanRegular;
-  src: url("../fonts/IRANYekanRegular.ttf");
+  font-family: BNAZANIN;
+  src: url("../fonts/BNAZANIN.ttf");
 }
 
 @font-face {
@@ -411,7 +411,7 @@ input[type="number"] {
 /**************** main css ************/
 
 body {
-  font-family: IRANYekanRegular;
+  font-family: BNAZANIN;
   height: 100vh;
   margin: auto;
 }
@@ -420,7 +420,7 @@ body {
   max-width: 500px;
   height: 100%;
   margin: auto;
-  padding: 10px 2px 50px;
+  padding: 10px 0px 50px;
 }
 
 #step {
@@ -428,7 +428,7 @@ body {
   justify-items: center;
   justify-content: space-between;
   position: relative;
-  margin-top: 45px;
+  margin-top: 30px;
 }
 
 .step-content {
@@ -438,14 +438,14 @@ body {
   align-items: start;
   background: rgb(245, 245, 245);
   width: 100%;
-  height: 60px;
+  height: 90px;
   padding-right: 30px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 }
 
 .step-img img {
-  max-width: 100px;
+  max-width: 85px;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -453,7 +453,8 @@ body {
 
 .primary-text {
   color: #333;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .top-margin {
@@ -462,7 +463,7 @@ body {
 
 .secondary-text {
   color: #aaa;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .primary-color {
@@ -470,7 +471,7 @@ body {
 }
 
 .step-progress {
-  margin: 40px auto 10px;
+  margin: 30px auto 10px;
   display: flex;
   justify-content: center;
 }
@@ -480,7 +481,7 @@ body {
 }
 
 .form {
-  margin-top: 50px;
+  margin-top: 25px;
   padding: 0 15px;
 }
 
@@ -494,7 +495,7 @@ body {
   width: 100%;
   height: 55px;
   border-radius: 5px;
-  border: 1px solid #333;
+  border: 1px solid #aaa;
   padding: 18px 45px 18px 0;
   outline: none;
   letter-spacing: 5px;
@@ -562,6 +563,131 @@ input:focus {
 #modalTrigger {
   margin-right: 6px;
 }
+
+/******* page 3 ********/
+.select-input {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  margin-top: 10px;
+}
+
+select {
+  width: 33%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: IRANSansWebFaNum;
+}
+/****** page 3 *********/
+
+/******** progress *******/
+.progressbar {
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.progressbar .progress {
+  width: 25%;
+  text-align: center;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.progressbar .progress p {
+  font-size: 14px;
+  color: rgb(153, 153, 153);
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.progressbar .progress.active p {
+  color: #a5247a;
+}
+
+.progressbar .progress-img-box {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 9;
+}
+
+.progressbar .progress-img-box img {
+  width: 20px;
+  height: 20px;
+}
+
+.progressbar .progress:after,
+.progressbar .progress:before {
+  content: "";
+  position: absolute;
+  top: 33%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 50%;
+  height: 1px;
+  background-color: #ccc;
+  z-index: -1;
+}
+
+.progressbar .progress:before {
+  right: 0;
+}
+
+.progressbar .progress:first-child:before {
+  content: "";
+  height: 0;
+}
+
+.progressbar .progress:last-child:after {
+  content: "";
+  height: 0;
+}
+
+.progressbar .progress.active .progress-img-box {
+  background-color: #a13580;
+  border-color: #a13580;
+}
+
+.progressbar .progress.active:after,
+.progressbar .progress.active:before {
+  content: "";
+  background-color: #a13580;
+  z-index: -1;
+}
+/******** progress-end **********/
 
 /********** checkBox start **********/
 .cbx {

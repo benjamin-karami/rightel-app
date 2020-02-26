@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>ثبت نام سیمکارت</title>
+  </head>
+  <body>
+    <section id="main-content">
+      <div id="contents">
+        <div id="error-message">
+          <p class="error-message">error</p>
+        </div>
+        <div id="top-nav">
+          <div id="step">
+            <div class="step-content">
+              <p class="primary-text">مشخصات فردی</p>
+              <p class="secondary-text">مرحله 1 از 4</p>
+            </div>
+            <div class="step-img">
+              <img src="./assets/img/rightel-logo.png" alt="RighTel-Logo" />
+            </div>
+          </div>
+          <div class="step-progress">
+            <div class="progressbar">
+              <div class="progress active">
+                <span class="progress-img-box">
+                  <img src="./assets/img/clipboard-color.png" alt="" />
+                </span>
+                <p>مشخصات</p>
+              </div>
+              <div class="progress">
+                <span class="progress-img-box">
+                  <img src="./assets/img/location-black.png" alt="" />
+                </span>
+                <p>آدرس</p>
+              </div>
+              <div class="progress">
+                <span class="progress-img-box">
+                  <img src="./assets/img/edit-black.png" alt="" />
+                </span>
+                <p>ویرایش</p>
+              </div>
+              <div class="progress">
+                <span class="progress-img-box">
+                  <img src="./assets/img/done-black.png" alt="" />
+                </span>
+                <p>تایید نهایی</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="input-container">
+            <label class="primary-text"
+              >نام<span class="primary-color">*</span></label
+            >
+            <input id="name" type="text" required />
+          </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >نام خانوادگی<span class="primary-color">*</span></label
+            >
+            <input id="surname" type="text" required />
+          </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >نام پدر<span class="primary-color">*</span></label
+            >
+            <input id="father-name" type="text" required />
+          </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >تاریخ تولد<span class="primary-color">*</span></label
+            >
+            <div class="select-input">
+              <select id="birth-year" name="birth-year">
+                <option value="" selected></option>
+              </select>
+              <select id="birth-month" name="birth-month">
+                <option value="" selected></option
+              ></select>
+              <select id="birth-day" name="birth-day">
+                <option value="" selected></option
+              ></select>
+            </div>
+          </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >جنسیت<span class="primary-color">*</span></label
+            >
+            <p>مرد</p>
+            <p>زن</p>
+          </div>
+          <div class="btn-container">
+            <a id="msisdn-submit" class="btn-primary" href="#">ارسال</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery.inputmask.bundle.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        (function() {
+          var year = 1399;
+          var select = $("#birth-year");
+
+          do {
+            $(select).append(
+              $("<option></option>")
+                .attr("value", year)
+                .text(year)
+            );
+            year--;
+          } while (year >= 1300);
+        })();
+      });
+
+      $(document).ready(function() {
+        (function() {
+          var year = 1;
+          var select = $("#birth-month");
+
+          do {
+            $(select).append(
+              $("<option></option>")
+                .attr("value", year)
+                .text(year)
+            );
+            year++;
+          } while (year <= 12);
+        })();
+      });
+
+      $(document).ready(function() {
+        (function() {
+          var year = 1;
+          var select = $("#birth-day");
+
+          do {
+            $(select).append(
+              $("<option></option>")
+                .attr("value", year)
+                .text(year)
+            );
+            year++;
+          } while (year <= 31);
+        })();
+      });
+    </script>
+  </body>
+</html>
