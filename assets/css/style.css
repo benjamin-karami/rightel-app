@@ -403,6 +403,11 @@ input[type="number"] {
   src: url("../fonts/IRANYekanRegular.ttf");
 }
 
+@font-face {
+  font-family: IRANSansWebFaNum;
+  src: url("../fonts/IRANSansWebFaNum.ttf");
+}
+
 /**************** main css ************/
 
 body {
@@ -492,6 +497,10 @@ body {
   border: 1px solid #333;
   padding: 18px 45px 18px 0;
   outline: none;
+  letter-spacing: 5px;
+  direction: ltr;
+  text-align: right;
+  font-family: IRANSansWebFaNum;
 }
 
 #identity-number {

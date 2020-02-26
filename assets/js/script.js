@@ -70,6 +70,7 @@ $(document).ready(function() {
     var checkbox = $("#cbx");
     var identity = $("#identity-number").val();
     var msisdn = $("#cellPhone-number").val();
+    identity = fixNumbers(identity);
     msisdn = msisdn.replace("_", "");
     msisdn = fixNumbers(msisdn);
     var ussdMtn = /(\+989|9|09)(30|33|35|36|37|38|39|01|02|03|04|05)\d{7}/.test(
@@ -100,7 +101,6 @@ $(document).ready(function() {
             $("#error-message").removeClass("slide-out-top");
           }, 10);
         }, 3000);
-        console.log("کد ملی خود را کامل وارد کنید");
       } else if (msisdn.length < 11 && identity.length === 10) {
         $("#error-message").css("display", "flex");
         $("#error-message").addClass("slide-in-top");
@@ -126,7 +126,6 @@ $(document).ready(function() {
             $("#error-message").removeClass("slide-out-top");
           }, 10);
         }, 3000);
-        console.log("لطفا شرایط و قوانین را تیک بزنید");
       } else if (msisdn.length === 11 && identity.length === 10) {
         if (!ussdMci || !ussdMtn || !ussdRigh) {
           $("#error-message").css("display", "flex");
@@ -140,9 +139,16 @@ $(document).ready(function() {
               $("#error-message").removeClass("slide-out-top");
             }, 10);
           }, 3000);
-          console.log("شماره صحیح وارد کنید");
         }
       }
     }
+  });
+  var msisdn = $("#cellPhone-number").val();
+  msisdn = msisdn.replace("_", "");
+  $("#cellPhone-number").inputmask({
+    regex: "09[0-9۰-۹٠-٩]{9}",
+    allowPlus: false,
+    allowMinus: false,
+    prefix: "09"
   });
 });
