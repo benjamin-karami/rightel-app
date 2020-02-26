@@ -17,7 +17,7 @@
           <div id="step">
             <div class="step-content">
               <p class="primary-text">مشخصات فردی</p>
-              <p class="secondary-text">مرحله 1 از 5</p>
+              <p class="secondary-text">مرحله 1 از 4</p>
             </div>
             <div class="step-img">
               <img src="./assets/img/rightel-logo.png" alt="RighTel-Logo" />
@@ -100,6 +100,7 @@
               ></label
             >
           </div>
+          <p id="errorForInvalidInfo" class="error"></p>
           <div class="btn-container">
             <a id="msisdn-submit" class="btn-primary" href="#">ارسال</a>
           </div>
@@ -223,8 +224,7 @@
             } else if (msisdn.length < 11 && identity.length === 10) {
               $("#error-message").css("display", "flex");
               $("#error-message").addClass("slide-in-top");
-              console.log("شماره کامل وارد کنید");
-              $(".error-message").html("شماره ات رو کامل وارد کن");
+              $(".error-message").html("شماره همراه کامل وارد کنید");
               setTimeout(function() {
                 $("#error-message").removeClass("slide-in-top");
                 $("#error-message").addClass("slide-out-top");

@@ -508,7 +508,6 @@ body {
   border: 1px solid #aaa;
   padding: 18px 45px 18px 0;
   outline: none;
-  letter-spacing: 5px;
   direction: ltr;
   text-align: right;
   font-family: IRANSansWebFaNum;
@@ -527,6 +526,7 @@ body {
   background-position: right;
   background-size: 9% 60%;
   background-position: right 7px top 50%;
+  letter-spacing: 5px;
 }
 
 input:focus {
@@ -590,6 +590,18 @@ input:focus {
   margin-right: 6px;
 }
 
+#errorForInvalidInfo {
+  text-align: center;
+  margin: 10px auto;
+  color: #fff;
+  background-color: #ff3550;
+  width: 90%;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
 /******* page 3 ********/
 .select-input {
   display: flex;
@@ -602,6 +614,7 @@ select {
   width: 33%;
   padding: 10px 10px;
   border-radius: 5px;
+  outline: none;
   font-family: IRANSansWebFaNum;
 }
 
