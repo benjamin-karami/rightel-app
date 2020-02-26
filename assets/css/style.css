@@ -578,7 +578,50 @@ select {
   border-radius: 5px;
   font-family: IRANSansWebFaNum;
 }
-/****** page 3 *********/
+
+#name {
+  background-image: url("../img/name-icon.png");
+  background-repeat: no-repeat;
+  background-position: right 8px top 50%;
+}
+
+#surname {
+  background-image: url("../img/family-icon.png");
+  background-repeat: no-repeat;
+  background-position: right 8px top 50%;
+}
+
+.gender-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.gender-container p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  position: relative;
+  padding: 20px 10px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  border: 1px solid #a5247a;
+}
+
+.gender-container p.active {
+  background-color: #a5247a;
+  border: 1px solid transparent;
+  color: #fff;
+}
+
+.gender-container p img {
+  position: absolute;
+  right: 10px;
+}
+/****** page 3 end *********/
 
 /******** progress *******/
 .progressbar {

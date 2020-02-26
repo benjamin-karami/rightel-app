@@ -91,8 +91,10 @@
             <label class="primary-text"
               >جنسیت<span class="primary-color">*</span></label
             >
-            <p>مرد</p>
-            <p>زن</p>
+            <div class="gender-container">
+              <p><img src="./assets/img/male-icon.png" alt="" /> مرد</p>
+              <p><img src="./assets/img/male-icon.png" alt="" /> زن</p>
+            </div>
           </div>
           <div class="btn-container">
             <a id="msisdn-submit" class="btn-primary" href="#">ارسال</a>
@@ -149,6 +151,20 @@
             year++;
           } while (year <= 31);
         })();
+      });
+
+      $(".gender-container p").click(function() {
+        $(this)
+          .addClass("active")
+          .siblings()
+          .removeClass("active");
+        $(this)
+          .children("img")
+          .attr("src", "./assets/img/male-icon-white.png");
+        $(this)
+          .siblings()
+          .children("img")
+          .attr("src", "./assets/img/male-icon.png");
       });
     </script>
   </body>
