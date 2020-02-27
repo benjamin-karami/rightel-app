@@ -692,6 +692,64 @@ select {
 }
 /****** page 3 end *********/
 
+/******** page 4 **********/
+#state {
+  background-image: url("../img/state-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#city {
+  background-image: url("../img/city-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#postal-code {
+  background-image: url("../img/postalnumber-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#tell {
+  background-image: url("../img/homephone-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#primary-street {
+  background-image: url("../img/primarystreet-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#secondary-street {
+  background-image: url("../img/secondstreet-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#alley {
+  background-image: url("../img/alley-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+
+#house-num {
+  background-image: url("../img/housenum-icon.png");
+  background-repeat: no-repeat;
+  background-size: 8% 60%;
+  background-position: right 7px top 50%;
+}
+/******** page 4 end **********/
+
 /******** progress *******/
 .progressbar {
   max-width: 360px;
