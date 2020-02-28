@@ -602,6 +602,60 @@ input:focus {
   border-radius: 5px;
 }
 
+/*********** page 2 *********/
+.otp-margin {
+  margin: 40px auto 40px;
+}
+
+#otp-number {
+  background-image: url("../img/confirm-icon.png");
+  background-repeat: no-repeat;
+  background-size: 9% 60%;
+  background-position: right 7px top 50%;
+  text-align: center;
+  padding: 0 0;
+  letter-spacing: 5px;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.final-countdown {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+#numberEdit {
+  font-size: 20px;
+  position: relative;
+}
+
+#numberEdit::after {
+  position: absolute;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: #a13580;
+  bottom: -1;
+}
+
+.err-message {
+  margin: 0px auto 10px;
+  background: #f94040;
+  border-radius: 5px;
+  direction: rtl;
+  text-align: center;
+  line-height: 2;
+  color: #fff;
+}
+/*********** page 2 end **********/
+
 /******* page 3 ********/
 .select-input {
   display: flex;
