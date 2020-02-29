@@ -511,6 +511,7 @@ body {
   direction: ltr;
   text-align: right;
   font-family: IRANSansWebFaNum;
+  font-size: 18px !important;
 }
 
 #identity-number {
@@ -600,6 +601,16 @@ input:focus {
   line-height: 1.2;
   font-size: 16px;
   border-radius: 5px;
+}
+
+.main-list {
+  list-style: none;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.main-list:last-child li {
+  margin-right: 20px;
 }
 
 /*********** page 2 *********/
@@ -1082,6 +1093,7 @@ select {
   display: flex;
   flex-direction: column;
   font-size: 11px;
+  border-radius: 15px;
 }
 .modal-content p {
   line-height: 2;
