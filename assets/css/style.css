@@ -856,6 +856,22 @@ select {
 }
 /********** page 5 end **********/
 
+/********** page 6 ***********/
+.extra-info {
+  width: 100%;
+  border: 1px solid #aaa;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 1.3;
+  font-family: BNAZANIN;
+}
+
+.extra-info span {
+  font-weight: 600;
+}
+/********* page 6 end ***********/
+
 /******** progress *******/
 .progressbar {
   max-width: 360px;
@@ -1043,7 +1059,7 @@ select {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 10; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
@@ -1167,5 +1183,11 @@ select {
 
   .btn-container {
     margin-top: 30px;
+  }
+}
+
+@media only screen and (min-width: 470px) {
+  .input-container input {
+    padding: 18px 60px 18px 0;
   }
 }
