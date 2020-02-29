@@ -69,7 +69,7 @@
               name="state"
               onChange="iranstate(this.value);"
             >
-              <option value=""></option>
+              <option value="">------</option>
               <option value="1">تهران</option>
               <option value="2">گیلان</option>
               <option value="3">آذربایجان شرقی</option>
@@ -108,6 +108,7 @@
               >شهر<span class="primary-color">*</span></label
             >
             <select style="width:100%; margin-top: 10px;" name="city" id="city">
+              <option value="">-----</option>
             </select>
           </div>
           <div class="input-container top-margin">
@@ -141,9 +142,9 @@
             <input
               id="postal-code"
               type="number"
-              required
               pattern="/^-?\d+\.?\d*$/"
               onKeyPress="if(this.value.length==10) return false;"
+              required
             />
           </div>
           <div class="input-container top-margin">
@@ -1354,6 +1355,8 @@
           var msisdn = $("#cellPhone-number").val();
           msisdn = msisdn.replace("_", "");
           msisdn = fixNumbers(msisdn);
+          tell = fixNumbers(tell);
+
           var ussdMtn = /(\+989|9|09)(30|33|35|36|37|38|39|01|02|03|04|05)\d{7}/.test(
             msisdn
           );

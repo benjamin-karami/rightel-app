@@ -593,7 +593,7 @@ input:focus {
 
 #errorForInvalidInfo {
   text-align: center;
-  margin: 10px auto;
+  margin: 15px auto 10px;
   color: #fff;
   background-color: #ff3550;
   width: 90%;
@@ -613,6 +613,18 @@ input:focus {
 
 .main-list:last-child li {
   margin-right: 20px;
+}
+
+#identity-number,
+#cellPhone-number,
+#shomare-shenasname,
+#identity-num,
+#house-num,
+#postal-code,
+#tell {
+  text-align: center !important;
+  padding: 18px 0;
+  letter-spacing: 5px;
 }
 
 /*********** page 2 *********/
@@ -681,6 +693,7 @@ select {
   width: 33%;
   padding: 10px 10px;
   border-radius: 5px;
+  font-size: 16px;
   outline: none;
   font-family: IRANSansWebFaNum;
 }
