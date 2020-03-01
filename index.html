@@ -65,9 +65,9 @@
             >
             <input
               id="identity-number"
-              type="number"
-              pattern="/^-?\d+\.?\d*$/"
-              onKeyPress="if(this.value.length==10) return false;"
+              type="text"
+              oninput="this.value = this.value.replace(/[^0-9۰-۹٠-٩]/g, '')"
+              maxlength="10"
             />
           </div>
           <div class="input-container top-margin">

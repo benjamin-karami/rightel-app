@@ -133,7 +133,12 @@
             <label class="primary-text"
               >پلاک<span class="primary-color">*</span></label
             >
-            <input id="house-num" type="number" required />
+            <input
+              id="house-num"
+              type="text"
+              required
+              oninput="this.value = this.value.replace(/[^0-9۰-۹٠-٩]/g, '')"
+            />
           </div>
           <div class="input-container top-margin">
             <label class="primary-text"
@@ -141,9 +146,9 @@
             >
             <input
               id="postal-code"
-              type="number"
-              pattern="/^-?\d+\.?\d*$/"
-              onKeyPress="if(this.value.length==10) return false;"
+              type="text"
+              oninput="this.value = this.value.replace(/[^0-9۰-۹٠-٩]/g, '')"
+              maxlength="10"
               required
             />
           </div>
@@ -156,10 +161,10 @@
             >
             <input
               id="tell"
-              type="number"
+              type="text"
               required
-              pattern="/^-?\d+\.?\d*$/"
-              onKeyPress="if(this.value.length==11) return false;"
+              oninput="this.value = this.value.replace(/[^0-9۰-۹٠-٩]/g, '')"
+              maxlength="11"
             />
           </div>
           <div class="input-container top-margin">

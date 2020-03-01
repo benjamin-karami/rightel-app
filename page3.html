@@ -117,7 +117,12 @@
             <label class="primary-text"
               >شماره شناسنامه<span class="primary-color">*</span></label
             >
-            <input id="shomare-shenasname" type="number" required />
+            <input
+              id="shomare-shenasname"
+              type="text"
+              required
+              oninput="this.value = this.value.replace(/[^0-9۰-۹٠-٩]/g, '')"
+            />
           </div>
           <div class="input-container top-margin">
             <label class="primary-text"
