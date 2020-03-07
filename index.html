@@ -52,6 +52,29 @@
             </div>
           </div>
         </div>
+        <div class="userStatus primary-text">
+          <p>شما جزء کدام یک از موارد زیر هستید :</p>
+          <ul>
+            <li>
+              <input
+                id="simOwner"
+                type="radio"
+                name="radio"
+                value="1"
+                checked
+              />
+              <label for="simOwner" class="primary-text"
+                >دارای سیم‌کارت در اپراتورها</label
+              >
+            </li>
+            <li>
+              <input id="noSim" type="radio" name="radio" value="2" />
+              <label for="noSim" class="primary-text"
+                >فاقد سیم‌کارت در اپراتورها</label
+              >
+            </li>
+          </ul>
+        </div>
         <form
           id="numberSend-form"
           name="numberSend-form"
@@ -213,9 +236,41 @@
         modal.style.display = "none";
       };
 
+      // check box
+
       // end modal script
 
       $(document).ready(function() {
+        $("#simOwner").on("click", function() {
+          $("form")
+            .get(0)
+            .setAttribute("action", "hello-page"); //this works
+          $("form")
+            .get(0)
+            .setAttribute("name", "hello-page"); //this works
+          $("#cellPhone-number")
+            .parent()
+            .show();
+        });
+
+        $("#noSim").on("click", function() {
+          $("form")
+            .get(0)
+            .setAttribute("action", "bye-page"); //this works
+          $("form")
+            .get(0)
+            .setAttribute("name", "bye-page"); //this works
+          $("#cellPhone-number")
+            .parent()
+            .hide();
+          ussdMci = true;
+        });
+        if ($("#simOwner").is(":checked")) {
+          $("form")
+            .get(0)
+            .setAttribute("action", "hello-page"); //this woxrks
+        }
+
         var persianNumbers = [
             /۰/g,
             /۱/g,
@@ -268,6 +323,11 @@
           var ussdMci = /(^(\+989|9|09)(90|91|92)\d{7}$)|(^(\+9891|91|091)[0-9]\d{7}$)/.test(
             msisdn
           );
+
+          if ($("#noSim").is(":checked")) {
+            ussdMci = true;
+          }
+
           if (
             (ussdMci && identity.length === 10 && checkbox.is(":checked")) ||
             (ussdMtn && identity.length === 10 && checkbox.is(":checked")) ||
