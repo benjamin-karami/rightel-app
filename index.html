@@ -100,6 +100,7 @@
             <input
               id="cellPhone-number"
               type="tel"
+              name="Msisdn"
               pattern="/^-?\d+\.?\d*$/"
               onKeyPress="if(this.value.length==11) return false;"
             />
@@ -241,13 +242,12 @@
       // end modal script
 
       $(document).ready(function() {
+        var ussdMci = true;
         $("#simOwner").on("click", function() {
           $("form")
             .get(0)
-            .setAttribute("action", "hello-page"); //this works
-          $("form")
-            .get(0)
-            .setAttribute("name", "hello-page"); //this works
+            .setAttribute("action", "/Registration/CheckEligibility"); //this works
+          $("#cellPhone-number").attr("name", "Msisdn");
           $("#cellPhone-number")
             .parent()
             .show();
@@ -256,20 +256,13 @@
         $("#noSim").on("click", function() {
           $("form")
             .get(0)
-            .setAttribute("action", "bye-page"); //this works
-          $("form")
-            .get(0)
-            .setAttribute("name", "bye-page"); //this works
+            .setAttribute("action", "/Registration/ConfirmOtp"); //this works
+          $("#cellPhone-number").removeAttr("name");
           $("#cellPhone-number")
             .parent()
             .hide();
           ussdMci = true;
         });
-        if ($("#simOwner").is(":checked")) {
-          $("form")
-            .get(0)
-            .setAttribute("action", "hello-page"); //this woxrks
-        }
 
         var persianNumbers = [
             /۰/g,
@@ -320,12 +313,13 @@
             msisdn
           );
 
-          var ussdMci = /(^(\+989|9|09)(90|91|92)\d{7}$)|(^(\+9891|91|091)[0-9]\d{7}$)/.test(
+          ussdMci = /(^(\+989|9|09)(90|91|92)\d{7}$)|(^(\+9891|91|091)[0-9]\d{7}$)/.test(
             msisdn
           );
 
           if ($("#noSim").is(":checked")) {
             ussdMci = true;
+            msisdn = "09120000000";
           }
 
           if (
@@ -333,8 +327,8 @@
             (ussdMtn && identity.length === 10 && checkbox.is(":checked")) ||
             (ussdRigh && identity.length === 10 && checkbox.is(":checked"))
           ) {
-            $("#numberSend-form").submit();
-            console.log("every thing is ok");
+            // $("#numberSend-form").submit();
+            console.log(msisdn);
           } else {
             if (!(identity.length === 10)) {
               $("#error-message").css("display", "flex");
@@ -376,7 +370,7 @@
               if (!ussdMci || !ussdMtn || !ussdRigh) {
                 $("#error-message").css("display", "flex");
                 $("#error-message").addClass("slide-in-top");
-                $(".error-message").html("شماره همراه صحیح وارد نمایید");
+                $(".error-message").html("شماره همراه صحیح و کامل وارد نمایید");
                 setTimeout(function() {
                   $("#error-message").removeClass("slide-in-top");
                   $("#error-message").addClass("slide-out-top");
